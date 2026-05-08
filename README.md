@@ -12,9 +12,11 @@ Simple linked LED project using STM32 HAL.
 
 \- LED blinking
 
-\- GPIO output control
+\- GPIO output/input control handling
 
+\- push button LED control
 
+&#x20; 
 
 \## Hardware
 
@@ -27,6 +29,12 @@ Simple linked LED project using STM32 HAL.
 \- STM32CubeIDE
 
 \- HAL Driver
+
+
+
+\## Future Improvements
+
+\- External interrupt button
 
 
 
