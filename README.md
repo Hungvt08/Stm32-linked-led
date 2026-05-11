@@ -16,7 +16,25 @@ Simple linked LED project using STM32 HAL.
 
 \- push button LED control
 
-&#x20; 
+\- EXTI external interrupt
+
+\- NVIC interrupt handling
+
+\- LED toggle on button press
+
+
+
+&#x20;## Debugging \& Verification
+
+\- Verified EXTI0 interrupt handling using breakpoints
+
+\- Debugged GPIO input state through register monitoring
+
+\- Traced NVIC interrupt execution flow
+
+\- Tested button-triggered LED toggle behavior
+
+
 
 \## Hardware
 
@@ -35,6 +53,24 @@ Simple linked LED project using STM32 HAL.
 \## Future Improvements
 
 \- External interrupt button
+
+
+
+\## Concepts Learned
+
+\- GPIO configuration
+
+\- Pull-up/pull-down resistor
+
+\- open-drain/push-pull moder of button
+
+\- EXTI interrupt
+
+\- NVIC configuration
+
+\- Edge detection circuit
+
+\- Interrupt debugging
 
 
 
