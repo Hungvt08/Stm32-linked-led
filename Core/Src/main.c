@@ -118,7 +118,6 @@ void Move_vector_table()
 	uint32_t* address_Exti0 = (uint32_t*)(vector_table_ram + 0x58);
 	*address_Exti0 = (uint32_t)My_interrupt_handle;
 }
-int debug_val = 1234;
 int main()
 {
 	HAL_Init();
@@ -128,7 +127,6 @@ int main()
 	Move_vector_table();
 	while(1)
 	{
-		printf("%d",debug_val);
 		led_ctrl(LED_BLUE, 1);
 		HAL_Delay(1000);
 		led_ctrl(LED_BLUE, 0);
