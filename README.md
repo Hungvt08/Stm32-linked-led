@@ -4,35 +4,37 @@
 
 \## Description
 
-Simple linked LED project using STM32 HAL.
+STM32 register-level project demonstrating GPIO control, EXTI interrupt handling, and runtime vector table remapping using VTOR.
 
 
 
 \## Features
 
-\- LED blinking
+\- GPIO input/output control
 
-\- GPIO output/input control handling
+\- Push button LED control
 
-\- push button LED control
+\- EXTI external interrupt handling
 
-\- EXTI external interrupt
+\- NVIC interrupt configuration
 
-\- NVIC interrupt handling
+\- Runtime Vector Table Relocation
 
-\- LED toggle on button press
+\- Custom Interrupt Service Routine (ISR)
+
+\- Dynamic ISR remapping using VTOR
+
+\- Register-level programming
 
 
 
-&#x20;## Debugging \& Verification
+\## Debugging \& Verification
 
-\- Verified EXTI0 interrupt handling using breakpoints
+\- Verified EXTI0 interrupt execution using breakpoints
 
-\- Debugged GPIO input state through register monitoring
+\- Monitored GPIO and EXTI registers during runtime
 
-\- Traced NVIC interrupt execution flow
-
-\- Tested button-triggered LED toggle behavior
+\- Traced NVIC interrupt flow using STM32CubeIDE debugger
 
 
 
@@ -46,13 +48,7 @@ Simple linked LED project using STM32 HAL.
 
 \- STM32CubeIDE
 
-\- HAL Driver
-
-
-
-\## Future Improvements
-
-\- External interrupt button
+\- STM32 HAL Driver
 
 
 
@@ -60,17 +56,31 @@ Simple linked LED project using STM32 HAL.
 
 \- GPIO configuration
 
-\- Pull-up/pull-down resistor
-
-\- open-drain/push-pull moder of button
-
-\- EXTI interrupt
+\- EXTI interrupt handling
 
 \- NVIC configuration
 
-\- Edge detection circuit
+\- Interrupt vector table
+
+\- VTOR register
+
+\- ISR remapping
+
+\- Register-level programming
 
 \- Interrupt debugging
+
+
+
+\## Future Improvements
+
+\- Software debouncing
+
+\- UART communication
+
+\- Timer interrupt integration
+
+\- Bootloader implementation
 
 
 
