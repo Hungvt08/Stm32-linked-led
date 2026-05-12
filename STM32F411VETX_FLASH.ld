@@ -133,7 +133,10 @@ SECTIONS
 
   /* Used by the startup to initialize data */
   _sidata = LOADADDR(.data);
-
+  .vector_table :
+  {
+  	*(.vector_table_area)
+  } > RAM
   /* Initialized data sections into "RAM" Ram type memory */
   .data :
   {

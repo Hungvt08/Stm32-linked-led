@@ -83,25 +83,52 @@ void EXTI0_IRQHandler()
 			led_ctrl(LED_RED, led_state);
 	}
 	old_button_led = current_button_led;
-//	if(button_get_state() == 1)
-//	{
-//		led_ctrl(LED_RED, 1);
-//	}
-//	else
-//	{
-//		led_ctrl(LED_RED, 0);
-//	}
+	// set clear-flag on 1
 	uint32_t* EXTI_PR = (uint32_t*)(EXTI0_BASE_ADDR + 0x14);
 	*EXTI_PR |= (1 << 0);
 }
+
+void My_interrupt_handle()
+{
+	static int old_button_led = 0;
+	static int led_state = 0;
+	int current_button_led;
+	current_button_led = button_get_state();
+	if(old_button_led == 1 && current_button_led == 0)
+	{
+			led_state = !led_state;
+			led_ctrl(LED_RED, led_state);
+	}
+	old_button_led = current_button_led;
+	uint32_t* EXTI_PR = (uint32_t*)(EXTI0_BASE_ADDR + 0x14);
+	*EXTI_PR |= (1 << 0);
+}
+__attribute__((section(".vector_table_area"))) char vector_table_ram[408];
+void Move_vector_table()
+{
+	uint8_t* vector_table = (uint8_t*)0x00;
+	for(int i = 0; i < 198 ; i++)
+	{
+//		*(ram + i) = (vector_table + i);
+		vector_table_ram[i] = vector_table[i];
+	}
+	// config NVIC
+	uint32_t* VTOR = (uint32_t*) 0xE000ED08;
+	*VTOR = (uint32_t)vector_table_ram;
+	uint32_t* address_Exti0 = (uint32_t*)(vector_table_ram + 0x58);
+	*address_Exti0 = (uint32_t)My_interrupt_handle;
+}
+int debug_val = 1234;
 int main()
 {
 	HAL_Init();
 	led_init();
 	button_init();
 	EXTI_interrupt_init();
+	Move_vector_table();
 	while(1)
 	{
+		printf("%d",debug_val);
 		led_ctrl(LED_BLUE, 1);
 		HAL_Delay(1000);
 		led_ctrl(LED_BLUE, 0);
